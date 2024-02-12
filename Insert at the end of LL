@@ -1,0 +1,60 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+class Node
+{
+    public:
+    int value;
+    Node* next;
+};
+
+void push(Node** head, int data)
+{
+    Node* n = new Node();
+    n->value = data;
+    n->next = *head;
+    *head = n;
+}
+
+void traverse(Node* head)
+{
+    Node* temp = head;
+    while(temp != NULL)
+    {
+        cout<< temp->value << " -> ";
+        temp = temp->next;
+    }
+    cout << "NULL" << endl;
+}
+
+void insertEnd(Node** head, int data)
+{
+    Node* n = new Node();
+    n->value = data;
+    if(*head==NULL )
+    {
+        *head = n;
+        return;
+    }
+    Node* last = *head;
+    while(last->next != NULL)
+    {
+        last = last->next;
+    }
+    
+    last->next = n;
+}
+
+int main()
+{
+    Node *head = NULL;
+    push(&head,1);
+    push(&head,11);
+    push(&head,111);
+    push(&head,1111);
+    push(&head,11111);
+    traverse(head);
+    insertEnd(&head,000);
+    traverse(head);
+    return 0;
+}
