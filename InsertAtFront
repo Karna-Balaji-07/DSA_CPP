@@ -1,0 +1,41 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+class Node
+{
+    public:
+    int value;
+    Node* next;
+};
+
+void traverse(Node* head)
+{
+    Node* temp = head;
+    while(temp != NULL)
+    {
+        cout << temp->value << " -> ";
+        temp = temp->next;
+    }
+    cout << "NULL" << endl;
+}
+
+void insertAtFront(Node** head, int data)
+{
+    Node* n = new Node();
+    n->value = data;
+    n->next = *head;
+    (*head) = n;
+}
+
+int main()
+{
+    Node* head = NULL;
+    insertAtFront(&head,1);
+    insertAtFront(&head,2);
+    insertAtFront(&head,5);
+    insertAtFront(&head,7);
+    insertAtFront(&head,9);
+    traverse(head);
+    return 0;
+    
+}
